@@ -46,9 +46,18 @@ def has_english(name_list):
 
 
 cleared_names = clear_names('names.txt')
+
 cyr_names_list = has_cyrillic(cleared_names)
+
+with open("src/rus_names.txt", "w", encoding='utf-8') as names_file:
+    names_file.write(str(cyr_names_list))
+
+
 eng_names_list = has_english(cleared_names)
 
+
+with open("src/eng_names.txt", "w", encoding='utf-8') as names_file:
+    names_file.write(str(eng_names_list))
 
 for name in cyr_names_list:
     print(name)
