@@ -20,22 +20,40 @@ def clear_names(file_name):
     return new_names_list
 
 
-def has_cyrillic(cleared_names):
-    cyr_names_list = list()
+def has_cyrillic(name_list):
     cyr_names =[]
     for cleared_name in cleared_names:
         if  bool(re.search('[а-яА-Я]', cleared_name)):
             cyr_names.append(cleared_name)
 
+    cyr_names.sort()
+
     return cyr_names
 
+def has_english(name_list):
+    eng_names =[]
+    for cleared_name in cleared_names:
+        if  bool(re.search('[a-zA-Z]', cleared_name)):
+            eng_names.append(cleared_name)
+
+    eng_names.sort()
+
+    return eng_names
+
+
+
+
+
+
 cleared_names = clear_names('names.txt')
-
 cyr_names_list = has_cyrillic(cleared_names)
-
-
-
+eng_names_list = has_english(cleared_names)
 
 
 for name in cyr_names_list:
+    print(name)
+
+print()
+
+for name in eng_names_list:
     print(name)
